@@ -1,5 +1,4 @@
-from datetime import datetime
-
+from datetime import datetime, timedelta
 
 class Comment:
     def __init__(self, author_id, text):
@@ -10,13 +9,15 @@ class Comment:
         self.like_count = 0
 
     def edit_comment(self, new_text):
-        pass
+        self.text = new_text
+        self.update_data = datetime.now() + timedelta(microseconds=1)
+        
 
     def like(self):
-        pass
+        self.like_count += 1
 
     def dislike(self):
-        pass
+        self.like_count -= 1
 
     def __repr__(self):
-        pass
+        return f"Comment(author_id={self.author_id}, text='{self.text}', like_count={self.like_count}, created_at={self.create_data}, updated_at={self.update_data})"
