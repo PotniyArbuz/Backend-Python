@@ -6,20 +6,23 @@ class Product:
         self.sale = 0
 
     def edit_category(self, new_category):
-        pass
+        self.category = new_category
 
     def edit_price(self, new_price):
-        pass
+        self.price = new_price
 
     def set_sale(self, sale):
-        pass
+        if 0 <= sale <= 100:
+            self.sale = sale
+        else:
+            raise ValueError("Скидка должна быть в диапазоне от 0 до 100.")
 
     def cancel_sale(self):
-        pass
+        self.sale = 0
 
     def get_price(self):
-        # Это не тупо геттер - тут надо учесть скидку и еще то, что скидка указана в процентах
-        pass
+        return self.price * (1 - self.sale / 100)
 
     def __repr__(self):
-        pass
+        return (f"Product(name='{self.name}', category='{self.category}', "
+                f"price={self.price}, sale={self.sale})")
